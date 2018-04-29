@@ -1,9 +1,10 @@
-const tibbit08 = require("@tibbo-tps/tibbit-08");
+const wiegand = require('wiegand');
+const w = wiegand();
 
-tibbit08.init(["s23"],100)
-    .on("dataReceivedEvent", (data) => {
-        console.log(data);
-    });
+w.begin({ d0: 17, d1: 18});
+    w.on('data', (length, data) => {
+    console.log('Got', length, 'bits from wiegand with data:' data);
+});
 
 // Prevent app from closing
 setInterval(function(){},60000);

@@ -1,4 +1,5 @@
-const tibbit08 = require("@tibbo-tps/tibbit-08");
+const wiegand = require('wiegand');
+const w = wiegand();
 var express = require("express");
 var app = express();
 var http = require('http').Server(app);
@@ -53,8 +54,10 @@ var clients = io.on('connection', function(socket){
     });
 });
 
-tibbit08.init(["s23"],100)
-    .on("dataReceivedEvent", (data) => {
+//tibbit08.init(["s23"],100)
+w.begin({ d0: 17, d1: 18});
+//    .on("dataReceivedEvent", (data) => {
+      w.on('data', (length, data) => {
         if(states.registration === true){
             clients.emit('reader:get', {userId:data.value});
             states.registration = false;
@@ -68,7 +71,7 @@ tibbit08.init(["s23"],100)
                 }
 
                 db.writeEvent(result, function(err, result){
-                    if(err === null){
+                   if(err === null){
                         clients.emit('events:add', result);
                     }
                 });

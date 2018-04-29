@@ -1,25 +1,23 @@
-const gpio = require("@tibbo-tps/gpio");
+const Gpio = require('onoff').Gpio;
 
-var blue = gpio.init("S9A");
-blue.setDirection("output");
-blue.setValue(1);
+const blue = new Gpio(17, 'out');
+blue.writeSync(1);
 
-var red = gpio.init("S11A");
-red.setDirection("output");
-red.setValue(1);
+const red = new Gpio(18, 'out');
+red.writeSync(1);
 
 exports.blink = function(color){
     if(color === "red"){
-        red.setValue(0);
+        red.writeSync(0);
 
         setTimeout(function(){
-            red.setValue(1);
+            red.writeSync(1);
         },500)
     }else if (color === "blue"){
-        blue.setValue(0);
+        blue.writeSync(0);
 
         setTimeout(function(){
-            blue.setValue(1);
+            blue.writeSync(1);
         },500)
     }
 };
