@@ -6,8 +6,9 @@ Module requirements.
 Wiegand.
 
 Installation
-$ npm install --save wiegand
 
+$ npm install --save wiegand
+-----------------------------------------
 Running
 
 Make sure you export your GPIO pins according to the epoll docs:
@@ -21,7 +22,7 @@ Note: If you are using the GPIO command to export, it does not automatically set
 
 $ gpio export 17 in
 $ echo both > /sys/class/gpio/gpio17/edge
------------------------------------------
+
 
 Express.
 
