@@ -1,9 +1,9 @@
 const Gpio = require('onoff').Gpio;
 
-const blue = new Gpio(17, 'out');
+const blue = new Gpio(22, 'out');
 blue.writeSync(1);
 
-const red = new Gpio(18, 'out');
+const red = new Gpio(27, 'out');
 red.writeSync(1);
 
 exports.blink = function(color){
