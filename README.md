@@ -1,6 +1,15 @@
 # wiegand-demo
 An attempt to port this wiegand demo to raspberry pi
 
+*Note* 
+Wiegand Reader data lines are 5v and will need to be connected to a logic level converter to protect the pi's 3.3v GPIO
+
+Wiegand Reader D0 connected to GPIO 17
+Wiegand Reader D0 connected to GPIO 18
+Status Led Red connected to GPIO 27
+Status Led Blue connected to GPIO 22
+
+
 Module requirements.
 
 Wiegand.
