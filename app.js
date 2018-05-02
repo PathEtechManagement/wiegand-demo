@@ -54,10 +54,8 @@ var clients = io.on('connection', function(socket){
     });
 });
 
-//tibbit08.init(["s23"],100)
 w.begin({ d0: 17, d1: 18});
-//    .on("dataReceivedEvent", (data) => {
-      w.on('data', (length, data) => {
+      w.on("dataReceivedEvent", (length, data) => {
         if(states.registration === true){
             clients.emit('reader:get', {userId:data.value});
             states.registration = false;

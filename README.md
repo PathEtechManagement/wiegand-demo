@@ -13,44 +13,41 @@ Status Led Blue connected to GPIO 22
 Module requirements.
 
 Wiegand.
-
 Installation
-
 $ npm install --save wiegand
------------------------------------------
-Running
 
 Make sure you export your GPIO pins according to the epoll docs:
-
 #!/bin/sh 
 echo 17 > /sys/class/gpio/export
+echo 18 > /sys/class/gpio/export
 echo in > /sys/class/gpio/gpio17/direction
+echo in > /sys/class/gpio/gpio18/direction
 echo both > /sys/class/gpio/gpio17/edge
+echo both > /sys/class/gpio/gpio18/edge
 
 Note: If you are using the GPIO command to export, it does not automatically set the edge for you. You must do it separately:
 
 $ gpio export 17 in
 $ echo both > /sys/class/gpio/gpio17/edge
+$ gpio export 18 in
+$ echo both > /sys/class/gpio/gpio18/edge
 
 
 Express.
 
 Installation
 $ npm install express
------------------------------------------
 
 Socket.io
-
 Installation
 $ npm install socket.io --save
------------------------------------------
+
 sqlite3.
 
 Installation
 $ npm install sqlite3
------------------------------------------
-onoff.
 
+onoff.
 Installation
 $ npm install onoff
 -----------------------------------------
