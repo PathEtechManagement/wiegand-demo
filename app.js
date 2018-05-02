@@ -55,12 +55,12 @@ var clients = io.on('connection', function(socket){
 });
 
 w.begin({ d0: 17, d1: 18});
-      w.on("dataReceivedEvent", (length, data) => {
+      w.on('data', (id) => {
         if(states.registration === true){
-            clients.emit('reader:get', {userId:data.value});
+            clients.emit('reader:get', {userId:id.value});
             states.registration = false;
         }else{
-            var userId = data.value;
+            var userId = id.value;
             db.getUser(userId, function(error, result){
                 if(result.permission === "denied"){
                     led.blink("red");
@@ -75,6 +75,7 @@ w.begin({ d0: 17, d1: 18});
                 });
             });
         }
+        console.log('Got', id, 'from RFID reader');
 });
 
 http.listen(3000,function(){
